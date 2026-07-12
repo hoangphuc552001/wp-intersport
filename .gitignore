@@ -28,12 +28,9 @@ wp-content/updraft*
 /xmlrpc.php
 /license.txt
 /readme.html
-/wp-content/plugins/*/vendor/
-/wp-content/themes/*/vendor/
 
 # Build and dependencies
 node_modules/
-vendor/
 dist/
 .DS_Store
 Thumbs.db
