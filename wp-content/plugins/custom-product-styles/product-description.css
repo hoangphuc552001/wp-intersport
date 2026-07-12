@@ -1,0 +1,193 @@
+.product-description {
+  max-width: 900px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #4b4b4b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.product-description h2 {
+  margin: 0 0 8px;
+  color: #1f4d96;
+  font-size: 27px;
+  line-height: 1.2;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.product-description > p {
+  margin: 0 0 10px;
+}
+
+.product-description h2:not(:first-child) {
+  margin-top: 10px;
+}
+
+.product-highlight {
+  margin-bottom: 14px;
+}
+
+.product-highlight h3 {
+  margin: 0 0 2px;
+  color: #4b4b4b;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.product-highlight p {
+  margin: 0;
+}
+
+.product-features {
+  margin: 5px 0 27px;
+  padding-left: 20px;
+}
+
+.product-features li {
+  margin: 0;
+  padding-left: 0;
+  line-height: 1.45;
+}
+
+.product-features li::marker {
+  color: #1f4d96;
+  font-size: 11px;
+}
+
+.product-item-number {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.product-item-number strong {
+  color: #1f4d96;
+  font-size: 14px;
+}
+
+.product-item-number span {
+  color: #555;
+}
+
+@media (max-width: 767px) {
+  .product-description {
+    font-size: 14px;
+  }
+
+  .product-description h2 {
+    font-size: 22px;
+  }
+
+  .product-item-number {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+/* --- INTERSPORT HEADER STYLES --- */
+
+/* Main Header Navigation Text */
+#header .nav > li > a,
+#header .header-nav .nav > li > a,
+#header .nav-top-link {
+    color: #214392 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Header Icons - only change color, preserve icon font */
+#header .header-nav i,
+#header .header-nav .icon,
+#header i,
+#header .icon {
+    color: #214392 !important;
+}
+
+/* SALE Menu Item - Red */
+/* Targets any link containing 'sale' in the href */
+#header .nav > li > a[href*="sale"],
+#header .nav > li > a[href*="SALE"],
+#header .sale-item > a {
+    color: #e32322 !important;
+}
+
+/* Thick Blue Bottom Border on Header */
+/* Applied to header-main since header-bottom is empty */
+#header .header-main {
+    border-bottom: 3px solid #214392 !important;
+    background-color: #ffffff !important;
+}
+
+/* Remove default Flatsome header shadows/borders */
+#header .header-wrapper {
+    box-shadow: none !important;
+    border-bottom: none !important;
+    background-color: #ffffff !important;
+}
+
+/* Top Bar - White text and icons on blue background */
+#top-bar a,
+#top-bar .nav-top-link,
+#top-bar i,
+#top-bar span,
+#top-bar .header-newsletter-title,
+#top-bar .social-icons a,
+#top-bar .social-icons a i {
+    color: #ffffff !important;
+}
+
+/* --- PRODUCT GRID: EQUAL HEIGHT IMAGES --- */
+
+/* Force all product thumbnail images to the same fixed height */
+.product-small .box-image {
+    height: 280px !important;
+    overflow: hidden !important;
+}
+
+.product-small .box-image .image-fade_in_back {
+    height: 100% !important;
+}
+
+.product-small .box-image .image-fade_in_back a {
+    display: block;
+    height: 100%;
+}
+
+.product-small .box-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background-color: #f7f7f7;
+}
+
+/* Equalize the text/info area below images */
+.product-small .box-text.box-text-products {
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+    .product-small .box-image {
+        height: 220px !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 549px) {
+    .product-small .box-image {
+        height: 180px !important;
+    }
+    .product-small .box-text.box-text-products {
+        min-height: 110px;
+    }
+}
+

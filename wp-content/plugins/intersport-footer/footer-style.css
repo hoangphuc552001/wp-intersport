@@ -1,0 +1,581 @@
+/* ==========================================================================
+   INTERSPORT ELVERYS - Custom Footer Styles
+   ========================================================================== */
+
+/* CSS Custom Properties */
+:root {
+    --isf-primary: #003DA5;
+    --isf-primary-dark: #002D7A;
+    --isf-accent: #E31837;
+    --isf-dark: #1A1A2E;
+    --isf-darker: #12121F;
+    --isf-darkest: #0A0A14;
+    --isf-text: #B8BCC8;
+    --isf-text-light: #8E93A3;
+    --isf-white: #FFFFFF;
+    --isf-border: rgba(255, 255, 255, 0.08);
+    --isf-border-light: rgba(255, 255, 255, 0.12);
+    --isf-radius: 8px;
+    --isf-transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --isf-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.intersport-footer {
+    font-family: var(--isf-font);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.intersport-footer *,
+.intersport-footer *::before,
+.intersport-footer *::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   USP Banner Bar
+   ========================================================================== */
+.intersport-footer__usp-bar {
+    background: linear-gradient(135deg, var(--isf-primary) 0%, var(--isf-primary-dark) 100%);
+    padding: 24px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.intersport-footer__usp-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.intersport-footer__usp-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.intersport-footer__usp-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: var(--isf-radius);
+    transition: background var(--isf-transition);
+}
+
+.intersport-footer__usp-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.intersport-footer__usp-icon {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+}
+
+.intersport-footer__usp-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.intersport-footer__usp-text strong {
+    color: var(--isf-white);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+}
+
+.intersport-footer__usp-text span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   Newsletter Signup
+   ========================================================================== */
+.intersport-footer__newsletter {
+    background: var(--isf-dark);
+    padding: 48px 0;
+    border-bottom: 1px solid var(--isf-border);
+    position: relative;
+}
+
+.intersport-footer__newsletter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,61,165,0.4), transparent);
+}
+
+.intersport-footer__newsletter-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+}
+
+.intersport-footer__newsletter-text h3 {
+    color: var(--isf-white);
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.intersport-footer__newsletter-text p {
+    color: var(--isf-text);
+    font-size: 15px;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.intersport-footer__newsletter-form {
+    flex: 1;
+    max-width: 480px;
+}
+
+intersport-footer__newsletter-input-wrap {
+    display: flex;
+    align-items: stretch;   /* was implicit — make it explicit */
+    gap: 0;
+    border-radius: var(--isf-radius);
+    overflow: hidden;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        0 0 0 1px var(--isf-border-light);
+    transition: box-shadow var(--isf-transition);
+}
+
+.intersport-footer__newsletter-input-wrap input[type="email"],
+.intersport-footer__newsletter-input-wrap button {
+    box-sizing: border-box;   /* prevents padding from inflating height differently */
+    margin: 0;                /* buttons have default UA margin in some browsers */
+}
+
+.intersport-footer__newsletter-input-wrap input[type="email"] {
+    flex: 1;
+    padding: 14px 18px;
+    border: none;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--isf-white);
+    font-size: 14px;
+    font-family: var(--isf-font);
+    outline: none;
+    min-width: 0;
+    line-height: normal;
+}
+
+.intersport-footer__newsletter-input-wrap button {
+    padding: 14px 28px;
+    background: var(--isf-accent);
+    color: var(--isf-white);
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--isf-font);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--isf-transition), transform 0.1s ease;
+    letter-spacing: 0.02em;
+    line-height: normal;   /* buttons sometimes default to a taller line-height than inputs */
+}
+
+.intersport-footer__newsletter-input-wrap button:hover {
+    background: #C81430;
+}
+
+.intersport-footer__newsletter-input-wrap button:active {
+    transform: scale(0.97);
+}
+
+.intersport-footer__newsletter-success {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #4ADE80;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 12px;
+    animation: intersportFadeIn 0.4s ease;
+}
+
+@keyframes intersportFadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Main Footer Grid (Links)
+   ========================================================================== */
+.intersport-footer__main {
+    background: var(--isf-dark);
+    padding: 52px 0 40px;
+}
+
+.intersport-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+}
+
+.intersport-footer__col {
+    min-width: 0;
+}
+
+.intersport-footer__heading {
+    color: var(--isf-white);
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--isf-primary);
+    line-height: 1.3;
+}
+
+.intersport-footer__heading--mt {
+    margin-top: 28px;
+}
+
+.intersport-footer__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.intersport-footer__links li {
+    margin-bottom: 0;
+}
+
+.intersport-footer__links a {
+    display: inline-flex;
+    align-items: center;
+    color: var(--isf-text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 6px 0;
+    transition: color var(--isf-transition), padding-left var(--isf-transition);
+    line-height: 1.4;
+}
+
+.intersport-footer__links a::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 2px;
+    background: var(--isf-accent);
+    margin-right: 0;
+    transition: width var(--isf-transition), margin-right var(--isf-transition);
+    border-radius: 1px;
+}
+
+.intersport-footer__links a:hover {
+    color: var(--isf-white);
+}
+
+.intersport-footer__links a:hover::before {
+    width: 12px;
+    margin-right: 8px;
+}
+
+/* Contact Info */
+.intersport-footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.intersport-footer__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--isf-text);
+}
+
+.intersport-footer__contact-item svg {
+    color: var(--isf-primary);
+    min-width: 16px;
+}
+
+.intersport-footer__contact-item a {
+    color: var(--isf-text);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color var(--isf-transition);
+}
+
+.intersport-footer__contact-item a:hover {
+    color: var(--isf-white);
+}
+
+/* ==========================================================================
+   Social Media & Payment Row
+   ========================================================================== */
+.intersport-footer__social-payment {
+    background: var(--isf-darker);
+    padding: 28px 0;
+    border-top: 1px solid var(--isf-border);
+    border-bottom: 1px solid var(--isf-border);
+}
+
+.intersport-footer__social-payment-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+/* Social */
+.intersport-footer__social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.intersport-footer__social-label,
+.intersport-footer__payments-label {
+    color: var(--isf-text-light);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+.intersport-footer__social-icons {
+    display: flex;
+    gap: 8px;
+}
+
+.intersport-footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--isf-text);
+    text-decoration: none;
+    transition: all var(--isf-transition);
+    border: 1px solid var(--isf-border);
+}
+
+.intersport-footer__social-link:hover {
+    background: var(--isf-primary);
+    color: var(--isf-white);
+    border-color: var(--isf-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 61, 165, 0.35);
+}
+
+/* Payment Icons */
+.intersport-footer__payments {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.intersport-footer__payment-icons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.intersport-footer__payment-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0.8;
+    transition: opacity var(--isf-transition), transform var(--isf-transition);
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.2));
+}
+
+.intersport-footer__payment-icon:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Bottom Bar (Copyright & Legal)
+   ========================================================================== */
+.intersport-footer__bottom {
+    background: var(--isf-darkest);
+    padding: 20px 0;
+}
+
+.intersport-footer__bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.intersport-footer__copyright {
+    color: var(--isf-text-light);
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.intersport-footer__legal {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.intersport-footer__legal a {
+    color: var(--isf-text-light);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    transition: color var(--isf-transition);
+    position: relative;
+}
+
+.intersport-footer__legal a:hover {
+    color: var(--isf-white);
+}
+
+.intersport-footer__legal a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--isf-primary);
+    transition: width var(--isf-transition);
+}
+
+.intersport-footer__legal a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .intersport-footer__usp-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .intersport-footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+
+    .intersport-footer__newsletter-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .intersport-footer__newsletter-form {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .intersport-footer__usp-items {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .intersport-footer__usp-bar {
+        padding: 16px 0;
+    }
+
+    .intersport-footer__newsletter {
+        padding: 32px 0;
+    }
+
+    .intersport-footer__newsletter-text h3 {
+        font-size: 20px;
+    }
+
+    .intersport-footer__newsletter-input-wrap {
+        flex-direction: column;
+        border-radius: var(--isf-radius);
+    }
+
+    .intersport-footer__newsletter-input-wrap button {
+        border-radius: 0 0 var(--isf-radius) var(--isf-radius);
+    }
+
+    .intersport-footer__main {
+        padding: 36px 0 28px;
+    }
+
+    .intersport-footer__grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .intersport-footer__heading {
+        margin-bottom: 14px;
+    }
+
+    .intersport-footer__social-payment-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .intersport-footer__social,
+    .intersport-footer__payments {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .intersport-footer__bottom-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .intersport-footer__legal {
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   Override default Flatsome absolute footer since we have our own
+   ========================================================================== */
+.absolute-footer {
+    display: none !important;
+}
+
+/* Ensure smooth font rendering in dark backgrounds */
+.intersport-footer a {
+    -webkit-tap-highlight-color: transparent;
+}
