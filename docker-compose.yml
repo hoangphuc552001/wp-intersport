@@ -26,7 +26,7 @@ services:
       # Custom PHP config
       - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
-      - "127.0.0.1:8080:80"
+      - "127.0.0.1:8081:80"
     networks:
       - intersport_net
 
