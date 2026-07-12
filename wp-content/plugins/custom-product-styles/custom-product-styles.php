@@ -7,6 +7,6 @@
  */
 
 function custom_product_description_styles() {
-    wp_enqueue_style('product-desc-styles', plugin_dir_url(__FILE__) . 'product-description.css', [], '1.2');
+    wp_enqueue_style('product-desc-styles', plugin_dir_url(__FILE__) . 'product-description.css', [], '1.3');
 }
 add_action('wp_enqueue_scripts', 'custom_product_description_styles');
