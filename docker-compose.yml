@@ -1,42 +1,16 @@
 version: '3.8'
 
 services:
-  # ─── MySQL Database ───────────────────────────────────────
-  db:
-    image: mysql:8.0
-    container_name: intersport_db
-    restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: ${DB_NAME:-ecom_wordpress}
-      MYSQL_USER: ${DB_USER:-wordpress}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-changeme_strong_password}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-changeme_root_password}
-    volumes:
-      # Import initial DB dump if exists
-      - ./docker/db-init:/docker-entrypoint-initdb.d
-    ports:
-      - "3306:3306"
-    networks:
-      - intersport_net
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-changeme_root_password}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   # ─── WordPress (Apache + PHP) ─────────────────────────────
   wordpress:
     image: wordpress:6.8-php8.3-apache
     container_name: intersport_wp
     restart: unless-stopped
-    depends_on:
-      db:
-        condition: service_healthy
     environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_NAME: ${DB_NAME:-ecom_wordpress}
-      WORDPRESS_DB_USER: ${DB_USER:-wordpress}
-      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-changeme_strong_password}
+      WORDPRESS_DB_HOST: ${DB_HOST}:3306
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DEBUG: "false"
       # Performance

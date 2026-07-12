@@ -51,28 +51,6 @@ fi
 # Load env vars
 source .env
 
-# ─── 3. Export Database from Local ──────────────────────────
-echo ""
-echo "📋 Step 3: Database import..."
-
-if [ -z "$(ls -A docker/db-init/ 2>/dev/null)" ]; then
-    echo "⚠️  No database dump found in docker/db-init/"
-    echo ""
-    echo "   To export your local database, run this on your LOCAL machine:"
-    echo ""
-    echo "   mysqldump -u root ecom_wordpress > docker/db-init/001-database.sql"
-    echo ""
-    echo "   Then commit and push the dump, or scp it to the VPS:"
-    echo "   scp docker/db-init/001-database.sql user@vps:/path/to/project/docker/db-init/"
-    echo ""
-    read -p "   Continue without database? (y/n): " continue_no_db
-    if [ "$continue_no_db" != "y" ]; then
-        exit 0
-    fi
-else
-    echo "✅ Database dump found in docker/db-init/"
-fi
-
 # ─── 4. Set Permissions ────────────────────────────────────
 echo ""
 echo "📋 Step 4: Setting file permissions..."
@@ -120,14 +98,12 @@ echo "  🌐 WordPress is listening locally on: http://127.0.0.1:8080"
 echo ""
 echo "  Next steps:"
 echo "  ─────────────────────────────"
-echo "  1. Import your database dump if not done"
-echo "  2. Update WordPress URLs in Settings > General"
-echo "  3. Configure your VPS Nginx to proxy_pass to http://127.0.0.1:8080"
+echo "  1. Update WordPress URLs in Settings > General"
+echo "  2. Configure your VPS Nginx to proxy_pass to http://127.0.0.1:8080"
 echo ""
 echo "  Useful commands:"
 echo "  ─────────────────────────────"
 echo "  docker compose logs -f          # View logs"
 echo "  docker compose restart          # Restart all"
 echo "  docker compose down             # Stop all"
-echo "  docker compose exec db bash     # Access MySQL container"
 echo ""
