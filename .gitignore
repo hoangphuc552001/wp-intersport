@@ -31,7 +31,7 @@ wp-content/updraft*
 
 # Build and dependencies
 node_modules/
-dist/
+/dist/
 .DS_Store
 Thumbs.db
 *.log
