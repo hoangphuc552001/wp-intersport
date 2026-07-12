@@ -55,3 +55,16 @@ Thumbs.db
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Docker
+.env
+docker/db-init/*.sql
+
+# Temp scripts
+add_sale_prices.php
+add_variations.php
+update_prices.php
+update_variation_images.php
+check_*.php
+setup_*.php
+create_*.php

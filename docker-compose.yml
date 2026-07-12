@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # ─── MySQL Database ───────────────────────────────────────
+  db:
+    image: mysql:8.0
+    container_name: intersport_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-ecom_wordpress}
+      MYSQL_USER: ${DB_USER:-wordpress}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-changeme_strong_password}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-changeme_root_password}
+    volumes:
+      # Import initial DB dump if exists
+      - ./docker/db-init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - intersport_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-changeme_root_password}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── WordPress (Apache + PHP) ─────────────────────────────
+  wordpress:
+    image: wordpress:6.8-php8.3-apache
+    container_name: intersport_wp
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME:-ecom_wordpress}
+      WORDPRESS_DB_USER: ${DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-changeme_strong_password}
+      WORDPRESS_TABLE_PREFIX: wp_
+      WORDPRESS_DEBUG: "false"
+      # Performance
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_MEMORY_LIMIT', '256M');
+        define('WP_MAX_MEMORY_LIMIT', '512M');
+        define('DISALLOW_FILE_EDIT', true);
+        define('WP_AUTO_UPDATE_CORE', false);
+    volumes:
+      # Mount your custom themes and plugins directly from the repo
+      - ./wp-content/themes:/var/www/html/wp-content/themes
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins
+      # Custom PHP config
+      - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    ports:
+      - "127.0.0.1:8080:80"
+    networks:
+      - intersport_net
+
+networks:
+  intersport_net:
+    driver: bridge
