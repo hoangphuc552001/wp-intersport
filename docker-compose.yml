@@ -20,9 +20,10 @@ services:
         define('DISALLOW_FILE_EDIT', true);
         define('WP_AUTO_UPDATE_CORE', false);
     volumes:
-      # Mount your custom themes and plugins directly from the repo
+      # Mount your custom themes, plugins and uploads directly from the repo
       - ./wp-content/themes:/var/www/html/wp-content/themes
       - ./wp-content/plugins:/var/www/html/wp-content/plugins
+      - ./wp-content/uploads:/var/www/html/wp-content/uploads
       # Custom PHP config
       - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     ports:
